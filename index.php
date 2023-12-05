@@ -72,6 +72,15 @@ if(!isset($_SESSION))
 
                         </li>
                     </ul>
+                    <div class="login-container">
+                            <button class="login-button" onclick="redirectToLoginPage()">Đăng nhập</button>
+                     </div>
+                        <script src="script.js"></script>
+
+                    <a href="cart.php">
+                    <div class="shopping"><img src ="img/Shopping.png"></div>
+                    </a>
+
                 </div>
             </div>
         </nav>
@@ -86,6 +95,8 @@ if(!isset($_SESSION))
                     <img src="img/search.png" width="20">
 
                 </button>
+               
+              
             </div>
         </form>
         <div class="d-flex pt-3">

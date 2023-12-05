@@ -83,14 +83,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart | View Cart</title>
+    <title>Thanh Toan</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div class="boxcenter">
         <div class="row mb header">
-            <h1> SIÊU THỊ TRỰC TUYẾN</h1>
+            <h1>Online Books</h1>
         </div>
         <div class="row mb menu">
             <ul>
@@ -195,29 +195,15 @@
                     <div class="boxcontent2 menudoc">
                         <ul>
                             <li>
-                                <a href="#">Đồng hồ</a>
+                                <a href="#">IT</a>
                             </li>
                             <li>
-                                <a href="#">Laptop</a>
+                                <a href="#">English</a>
                             </li>
                             <li>
-                                <a href="#">Điện thoại</a>
+                                <a href="#">science-technology</a>
                             </li>
-                            <li>
-                                <a href="#">Ba lô</a>
-                            </li>
-                            <li>
-                                <a href="#">Đồng hồ</a>
-                            </li>
-                            <li>
-                                <a href="#">Laptop</a>
-                            </li>
-                            <li>
-                                <a href="#">Điện thoại</a>
-                            </li>
-                            <li>
-                                <a href="#">Ba lô</a>
-                            </li>
+                           
                         </ul>
                     </div>
                     <div class="boxfooter searbox">
@@ -226,43 +212,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="boxtitle">TOP 10 YÊU THÍCH</div>
-                    <div class="row boxcontent">
-                        <div class="row mb10 top10">
-                            <img src="images/1.jpg" alt="">
-                            <a href="#">Sir Rodney's Marmalade</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="images/5.jpg" alt="">
-                            <a href="#">Cate de Blaye</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="images/3.jpg" alt="">
-                            <a href="#">Tharinger Rostbratwurst</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="images/4.jpg" alt="">
-                            <a href="#">Mishi Kobe Niku</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="images/1.jpg" alt="">
-                            <a href="#">Sir Rodney's Marmalade</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="images/5.jpg" alt="">
-                            <a href="#">Cate de Blaye</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="images/3.jpg" alt="">
-                            <a href="#">Tharinger Rostbratwurst</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="images/4.jpg" alt="">
-                            <a href="#">Mishi Kobe Niku</a>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
         <div class="row mb footer">
