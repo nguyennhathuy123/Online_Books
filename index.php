@@ -67,13 +67,13 @@ if(!isset($_SESSION))
                             <?php if (isset($_SESSION['user_id'])) {?>
                             <a class="nav-link" href="admin.php">Admin</a>
                             <?php }else{ ?>
-                            <a class="nav-link" href="login.php">Login</a>
+                            <a class="nav-link" href="login.php">Admin</a>
                             <?php } ?>
 
                         </li>
                     </ul>
                     <div class="login-container">
-                            <button class="login-button" onclick="redirectToLoginPage()">Đăng nhập</button>
+                            <button class="login-button" onclick="redirectToLoginPage()">Login</button>
                      </div>
                         <script src="script.js"></script>
 
@@ -143,9 +143,12 @@ if(!isset($_SESSION))
 
                         <a href="uploads/files/<?=$book['file']?>" class="btn btn-primary"
                             download="<?=$book['title']?>">Download</a>
+                        <a href="cart" class="btn btn-addcart">Oder</a>
+
                     </div>
                 </div>
                 <?php } ?>
+             
             </div>
             <?php } ?>
 

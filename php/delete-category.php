@@ -2,15 +2,15 @@
 session_start();
 
 # If the admin is logged in
-if (isset($_SESSION['user_id']) &&
-    isset($_SESSION['user_email'])) {
+if (isset($_SESSION['user']) &&
+    isset($_SESSION['role'])) {
 
 	# Database Connection File
 	include "../connect.php";
 
 
     /** 
-	  check if the category 
+	  check if the category
 	  id set
 	**/
 	if (isset($_GET['id'])) {

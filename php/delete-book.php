@@ -2,11 +2,11 @@
 session_start();
 
 # If the admin is logged in
-if (isset($_SESSION['user_id']) &&
-    isset($_SESSION['user_email'])) {
+if (isset($_SESSION['user']) &&
+    isset($_SESSION['role'])) {
 
 	# Database Connection File
-	include "../db_conn.php";
+	include "../connect.php";
 
 
     /** 
@@ -27,18 +27,18 @@ if (isset($_SESSION['user_id']) &&
             exit;
 		}else {
              # GET book from Database
-			 $sql2  = "SELECT * FROM books
-			          WHERE id=?";
-			 $stmt2 = $conn->prepare($sql2);
-			 $stmt2->execute([$id]);
-			 $the_book = $stmt2->fetch();
-
-			 if($stmt2->rowCount() > 0){
-                # DELETE the book from Database
-				$sql  = "DELETE FROM books
-				         WHERE id=?";
-				$stmt = $conn->prepare($sql);
-				$res  = $stmt->execute([$id]);
+			$sqlCount  = "SELECT COUNT(id) as count FROM books WHERE id = $id";
+			$sql  = "SELECT * FROM books
+			WHERE id = $id";
+   			$resultCount = mysqli_query($conn, $sqlCount);
+   			$rowCount = mysqli_fetch_assoc($resultCount);
+   			$result = mysqli_query($conn, $sql);
+   			$row = mysqli_fetch_all($result, MYSQLI_ASSOC);
+   			if ($rowCount['count'] > 0) {
+                	# DELETE the book from Database
+					$sql  = "DELETE FROM books
+				         WHERE id= $id";
+					$resultDelete = mysqli_query($conn, $sql);
 
 				/**
 			      If there is no error while 

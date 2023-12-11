@@ -178,10 +178,14 @@ if(!isset($_SESSION))
 					?>
                     </td>
                     <td>
-                        <a href="edit-book.php?id=<?=$book['id']?>" class="btn btn-warning">
+                        <?php
+                        $_SESSION['book_id'] = $book['id'];
+                        $id = $book['id'];
+                        ?>
+                        <a href="edit-book.php?id=<?=$id?>" class="btn btn-warning">
                             Edit</a>
 
-                        <a href="php/delete-book.php?id=<?=$book['id']?>" class="btn btn-danger">
+                        <a href="php/delete-book.php?id=<?=$id?>" class="btn btn-danger">
                             Delete</a>
                     </td>
                 </tr>
@@ -191,7 +195,7 @@ if(!isset($_SESSION))
         <?php }?>
 
         <?php  if ($categories == 0) { ?>
-        <div class="alert alert-warning 
+        <div class="alert alert-warning
         	            text-center p-5" role="alert">
             <img src="img/empty.png" width="100">
             <br>

@@ -4,6 +4,29 @@ session_start();
 # If the admin is logged in
 if (isset($_SESSION['user_id']) &&
     isset($_SESSION['user_email'])) {
+    
+    # If category ID is not set
+	if (!isset($_GET['id'])) {
+		#Redirect to admin.php page
+        header("Location: admin.php");
+        exit;
+	}
+
+	$id = $_GET['id'];
+
+	# Database Connection File
+	include "connect.php";
+
+    # Category helper function
+	include "php/func-category.php";
+    $category = get_category($conn, $id);
+    
+    # If the ID is invalid
+    if ($category == 0) {
+    	#Redirect to admin.php page
+        header("Location: admin.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +34,7 @@ if (isset($_SESSION['user_id']) &&
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Add Author</title>
+	<title>Edit Category</title>
 
     <!-- bootstrap 5 CDN-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -45,7 +68,7 @@ if (isset($_SESSION['user_id']) &&
 		             href="add-category.php">Add Category</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link active" 
+		          <a class="nav-link" 
 		             href="add-author.php">Add Author</a>
 		        </li>
 		        <li class="nav-item">
@@ -56,13 +79,13 @@ if (isset($_SESSION['user_id']) &&
 		    </div>
 		  </div>
 		</nav>
-     <form action="php/add-author.php"
+     <form action="php/edit-category.php"
            method="post" 
            class="shadow p-4 rounded mt-5"
            style="width: 90%; max-width: 50rem;">
 
      	<h1 class="text-center pb-5 display-4 fs-3">
-     		Add New Author
+     		Edit Category
      	</h1>
      	<?php if (isset($_GET['error'])) { ?>
           <div class="alert alert-danger" role="alert">
@@ -76,16 +99,24 @@ if (isset($_SESSION['user_id']) &&
 		<?php } ?>
      	<div class="mb-3">
 		    <label class="form-label">
-		           	Author Name
+		           	Category Name
 		           </label>
+
+		     <input type="text" 
+		            value="<?=$category['id'] ?>" 
+		            hidden
+		            name="category_id">
+
+
 		    <input type="text" 
-		           class="form-control" 
-		           name="author_name">
+		           class="form-control"
+		           value="<?=$category['name'] ?>" 
+		           name="category_name">
 		</div>
 
 	    <button type="submit" 
 	            class="btn btn-primary">
-	            Add Author</button>
+	            Update</button>
      </form>
 	</div>
 </body>
