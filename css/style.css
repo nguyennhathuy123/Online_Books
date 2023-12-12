@@ -1,3 +1,4 @@
+
 .pdf-list {
 	width: 80%;
 }
@@ -38,7 +39,14 @@
     width: 30px; /* Đặt chiều rộng mong muốn */
     height: 30px; /* Đặt chiều cao mong muốn */
 }
-
+.btn btn-addcart {
+    background-color: #F30;
+    padding: 10px , 20px ;
+    font-size: 12px;
+    color: #EEE;
+    border: none;
+    border-radius: 5px;
+}
 
 
 .boxcenter {

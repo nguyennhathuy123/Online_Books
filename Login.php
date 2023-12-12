@@ -14,6 +14,8 @@
         {
             if($row['role'] == 1)
             {
+                $_SESSION['user'] = $row['username'];
+                $_SESSION['role'] = $row['role'];
                 header('location: admin.php');
             }
             else
@@ -132,6 +134,7 @@
         }
         ?>
                 <button type="submit" name="login">Login</button>
+                <a href="index.php" class="register-link">Store</a>
 
             </div>
         </form>
