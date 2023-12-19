@@ -1,134 +1,87 @@
-<?php
-
-@include 'connect.php';
-
-session_start();
-
-if(isset($_POST['submit'])){
-    
-   $email = mysqli_real_escape_string($conn, $_POST['usermail']);
-   $pass = md5($_POST['password']);
-   $cpass = md5($_POST['cpassword']);
-
-   $select = " SELECT * FROM user WHERE email = '$email' && password = '$password'";
-
-   $result = mysqli_query($conn, $select);
-
-   if(mysqli_num_rows($result) > 0){
-      $error[] = 'user already exist';
-   }else{
-      if($pass != $cpass){
-         $error[] = 'password not mathched!';
-      }else{
-         $insert = "INSERT INTO user(email, password) VALUES('$email','$password')";
-         mysqli_query($conn, $insert);
-         header('location: user.php');
-      }
-   }
-
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <style>
-      body {
-   font-family: Arial, sans-serif;
-   background-color: #f4f4f4;
-   margin: 0;
-   padding: 0;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
-}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="icon" href="../../../../Images/Icon-Logo/Logo-team.png" type="image/x-icon">
+   <style></style>
 
-.form-container {
-   background-color: #fff;
-   border-radius: 8px;
-   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   padding: 20px;
-   width: 300px;
-}
-
-.title {
-   text-align: center;
-   color: #333;
-}
-
-.box {
-   width: 100%;
-   padding: 10px;
-   margin: 10px 0;
-   box-sizing: border-box;
-   border: 1px solid #ccc;
-   border-radius: 4px;
-   font-size: 14px;
-}
-
-.form-btn {
-   background-color: #4caf50;
-   color: #fff;
-   padding: 10px;
-   border: none;
-   border-radius: 4px;
-   cursor: pointer;
-   width: 100%;
-   font-size: 16px;
-}
-
-.form-btn:hover {
-   background-color: #45a049;
-}
-
-.error-msg {
-   color: #ff0000;
-   display: block;
-   margin-bottom: 10px;
-}
-
-p {
-   text-align: center;
-   margin-top: 10px;
-}
-
-a {
-   color: #4caf50;
-   text-decoration: none;
-}
-
-a:hover {
-   text-decoration: underline;
-}
-
-   </style>
-</head>
 <body>
-    
-<div class="form-container">
-
-   <form action="" method="post">
-      <h3 class="title">register now</h3>
-      <?php
-         if(isset($error)){
-            foreach($error as $error){
-               echo '<span class="error-msg">'.$error.'</span>';
+    <div class="wrapper">
+        <div class="form-box register">
+            <h2>Register new account</h2>
+            <form action="#" method="post">
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="person-circle"></ion-icon>
+                    </span>
+                    <input class="username" type="text" name="username">
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail"></ion-icon>
+                    </span>
+                    <input class="email" type="email" name="email">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
+                    <input class="password" type="password" name="password">
+                    <label for="password">Password</label>
+                </div>
+                <div class="agree-description">
+                    <label>By register, you are accept with METAaov about the <a href="#">term</a> & <a
+                            href="#">condition</a></label>
+                </div>
+                <button type="submit" name="submit" class="btn-submit" onclick="validate()">Register</button>
+                <div class="login-reg">
+                    <p>Already have an account?
+                        <a href="user.php" class="user-link">Login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="Reg.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <?php
+    require 'connect.php';
+    if (isset($_POST['submit'])) {
+        if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            if (!empty($username) && !empty($email) && !empty($password)) {
+                $query = "SELECT user_name FROM user WHERE user_name = '$username'";
+                $query_run = mysqli_query($conn, $query);
+                if (mysqli_num_rows($query_run) > 0) {
+                    echo '<script type="text/javascript">alert("Username already exists")</script>';
+                } else {
+                    $query = "SELECT user_email FROM user WHERE user_email = '$email'";
+                    $query_run = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        echo '<script type="text/javascript">alert("Email already exists")</script>';
+                    } else {
+                        $query = "INSERT INTO user (user_name, user_email, user_pass) VALUES ('$username', '$email', '$password')";
+                        $query_run = mysqli_query($conn, $query);
+                        if ($query_run) {
+                            echo '<script type="text/javascript">alert("User Registered")</script>';
+                        } else {
+                            echo '<script type="text/javascript">alert("Error!")</script>';
+                        }
+                    }
+                }
             }
-         }
-      ?>
-      <input type="email" name="usermail" placeholder="enter your email" class="box" required>
-      <input type="password" name="password" placeholder="enter your password" class="box" required>
-      <input type="password" name="cpassword" placeholder="confirm your password" class="box" required>
-      <input type="submit" value="register now" class="form-btn" name="submit">
-      <p>already have an account? <a href="user.php">login now!</a></p>
-   </form>
-
-</div>
-
+        }
+    }
+    ?>
 </body>
+
 </html>

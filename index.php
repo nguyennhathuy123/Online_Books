@@ -72,10 +72,10 @@ if(!isset($_SESSION))
 
                         </li>
                     </ul>
-                    <div class="login-container">
-                            <button class="login-button" onclick="redirectToLoginPage()">Login</button>
-                     </div>
-                        <script src="script.js"></script>
+
+                    <a href="login.php">
+                         <button>Login</button>
+                     </a>
 
                     <a href="cart.php">
                     <div class="shopping"><img src ="img/Shopping.png"></div>
@@ -84,21 +84,11 @@ if(!isset($_SESSION))
                 </div>
             </div>
         </nav>
-        <form action="search.php" method="get" style="width: 100%; max-width: 30rem">
-
-            <div class="input-group my-5">
-                <input type="text" class="form-control" name="key" placeholder="Search Book..."
-                    aria-label="Search Book..." aria-describedby="basic-addon2">
-
-                <button class="input-group-text
-		                 btn btn-primary" id="basic-addon2">
-                    <img src="img/search.png" width="20">
-
-                </button>
-               
-              
-            </div>
-        </form>
+        <form action="search.php" method="get">
+        <label for="searchTerm">Search:</label>
+        <input type="text" id="searchTerm" name="searchTerm" required>
+        <button type="submit">Search</button>
+    </form>
         <div class="d-flex pt-3">
             <?php if ($books == 0){ ?>
             <div class="alert alert-warning 
@@ -143,7 +133,7 @@ if(!isset($_SESSION))
 
                         <a href="uploads/files/<?=$book['file']?>" class="btn btn-primary"
                             download="<?=$book['title']?>">Download</a>
-                        <a href="cart" class="btn btn-addcart">Oder</a>
+                        <a href="cart" class="btn btn-cart">Oder</a>
 
                     </div>
                 </div>

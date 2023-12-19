@@ -39,13 +39,15 @@
     width: 30px; /* Đặt chiều rộng mong muốn */
     height: 30px; /* Đặt chiều cao mong muốn */
 }
-.btn btn-addcart {
-    background-color: #F30;
-    padding: 10px , 20px ;
-    font-size: 12px;
-    color: #EEE;
+.btn btn-cart {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color:#F30;
+    color: #fff;
     border: none;
     border-radius: 5px;
+    outline: none;
 }
 
 

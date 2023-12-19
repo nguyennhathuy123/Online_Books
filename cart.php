@@ -61,14 +61,14 @@
                         </tr>';
                 }
                 echo '<tr>
-                        <th colspan="5">Tổng đơn hàng</th>
+                        <th colspan="5">Total orders</th>
                         <th>
                             <div>'.$tong.'</div>
                         </th>
     
                     </tr>';
             }else{
-                echo "Giỏ hàng rỗng!";
+                echo "Empty cart!";
             }    
         }
     }
@@ -94,29 +94,29 @@
         </div>
         <div class="row mb menu">
             <ul>
-                <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="cart.php">Giỏ hàng</a></li>
-                <li><a href="#">Liên hệ</a></li>
-                <li><a href="#">Góp ý</a></li>
-                <li><a href="#">Hỏi đáp</a></li>
+                <li><a href="index.php">Store</a></li>
+                <li><a href="cart.php">Cart</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Feedback</a></li>
+                <li><a href="#">FAQ</a></li>
             </ul>
         </div>
         <div class="row mb ">
             <div class="boxtrai mr" id="bill">
                 <div class="row" >
-                    <h1>THÔNG TIN NHẬN HÀNG</h1>
+                    <h1>DELIVERY INFORMATION</h1>
                     <table class="thongtinnhanhang">
                         <tr>
-                            <td width="20%">Họ tên</td>
-                            <td><input type="text" name="hoten" required></td>
+                            <td width="20%">Name</td>
+                            <td><input type="text" name="name" required></td>
                         </tr>
                         <tr>
-                            <td>Địa chỉ</td>
-                            <td><input type="text" name="diachi" required></td>
+                            <td>Address</td>
+                            <td><input type="text" name="address" required></td>
                         </tr>
                         <tr>
-                            <td>Điện thoại</td>
-                            <td><input type="text" name="dienthoai" required></td>
+                            <td>Telephone</td>
+                            <td><input type="text" name="telephone" required></td>
                         </tr>
                         <tr>
                             <td>Email</td>
@@ -125,16 +125,16 @@
                     </table>
                 </div>
                 <div class="row mb">
-                    <h1>GIỎ HÀNG</h1>
+                    <h1>CART</h1>
                     <table>
                         <tr>
                             <th>STT</th>
-                            <th>Hình</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Đơn giá</th>
-                            <th>Số lượng</th>
-                            <th>Thành tiền ($)</th>
-                            <th>Xóa</th>
+                            <th>IMG</th>
+                            <th>Product name</th>
+                            <th>Unit Price</th>
+                            <th>Amount</th>
+                            <th>To Money ($)</th>
+                            <th>Delete</th>
                         </tr>
                         <?php showgiohang(); ?>
                         <!-- <tr>
@@ -157,41 +157,41 @@
                     </table>
                 </div>
                 <div class="row mb">
-                    <input type="submit" value="ĐỒNG Ý ĐẶT HÀNG" name="dongydathang">
-                    <a href="cart.php?delcart=1"><input type="button" value="XÓA GIỎ HÀNG"></a>
-                    <a href="index.php"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>
+                    <input type="submit" value="AGREE TO ORDER" name="dongydathang">
+                    <a href="cart.php?delcart=1"><input type="button" value="DELETE CART"></a>
+                    <a href="index.php"><input type="button" value="CONTINUE ORDERING"></a>
                 </div>
             </div>
             <div class="boxphai">
                 <div class="row mb ">
-                    <div class="boxtitle">TÀI KHOẢN</div>
+                    <div class="boxtitle">ACCOUNT</div>
                     <div class="boxcontent formtaikhoan">
                         <form action="#" method="post">
                             <div class="row mb10">
-                                Tên đăng nhập<br>
+                                Username<br>
                                 <input type="text" name="user">
                             </div>
                             <div class="row mb10">
-                                Mật khẩu<br>
+                                Password<br>
 
                                 <input type="password" name="pass">
                             </div>
                             <div class="row mb10">
-                                <input type="checkbox" name=""> Ghi nhớ tài khoản?</div>
+                                <input type="checkbox" name=""> Remember the account?</div>
                             <div class="row mb10">
                                 <input type="submit" value="Đăng nhập">
                             </div>
                         </form>
                         <li>
-                            <a href="#">Quên mật khẩu</a>
+                            <a href="#">Forgot password</a>
                         </li>
                         <li>
-                            <a href="#">Đăng ký thành viên</a>
+                            <a href="#">Membership Registration</a>
                         </li>
                     </div>
                 </div>
                 <div class="row mb">
-                    <div class="boxtitle">DANH MỤC</div>
+                    <div class="boxtitle">DIRECTORY</div>
                     <div class="boxcontent2 menudoc">
                         <ul>
                             <li>
@@ -215,9 +215,7 @@
                 
             </div>
         </div>
-        <div class="row mb footer">
-            Copyright © 2021 - HOTB
-        </div>
+        
     </div>
 
 </body>

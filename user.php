@@ -1,144 +1,88 @@
-<?php
-    if(!isset($_SESSION))
-    {
-        session_start();
-    }
-    include "connect.php";
-    if(isset($_POST["user"])){
-        $uname = $_POST["email_user"];
-        $password = $_POST["psw_user"];
-        $query_user = "SELECT * FROM user WHERE email = '$email_user' AND password = '$psw_user'";
-        $result = mysqli_query($conn, $query_user);
-        $row = mysqli_fetch_assoc($result);
-        if($uname == $row['email_user'] && $password == $row['psw_user'])
-        {
-            if($row['role'] == 0)
-            {
-                $_SESSION['user'] = $row['email_user'];
-                $_SESSION['role'] = $row['role'];
-                header('location: index.php');
-            }
-            else
-            {
-                header('location: user.php');
-            }
-        }
-        else
-        {
-            $tb="tai khoan khong ton tai";
-        }
-    }
-?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../Images/Icon-Logo/Logo-team.png" type="image/x-icon">
     <title>Login</title>
-    <style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    form {
-        border: 3px solid #f1f1f1;
-    }
-
-    input[type=text],
-    input[type=password] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
-
-    button {
-        background-color: #04AA6D;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-    }
-
-    button:hover {
-        opacity: 0.8;
-    }
-
-    .cancelbtn {
-        width: auto;
-        padding: 10px 18px;
-        background-color: #f44336;
-    }
-
-    .imgcontainer {
-        text-align: center;
-        margin: 24px 0 12px 0;
-    }
-
-    img.avatar {
-        width: 40%;
-        border-radius: 50%;
-    }
-
-    .container {
-        padding: 16px;
-    }
-
-    span.psw {
-        float: right;
-        padding-top: 16px;
-    }
-
-    .boxcenter {
-        width: 500px;
-        margin: 0 auto;
-    }
-
-    /* Change styles for span and cancel button on extra small screens */
-    @media screen and (max-width: 300px) {
-        span.psw {
-            display: block;
-            float: none;
-        }
-
-        .cancelbtn {
-            width: 100%;
-        }
-    }
-    </style>
-</head>
+    <link rel="stylesheet" href="Login.css">
 
 <body>
-    <div class="boxcenter">
-        <h2>Login Form</h2>
-
-        <form action="Login.php" method="post">
-            <div class="imgcontainer">
-                <img src="img_avatar2.png" alt="Avatar" class="avatar">
-            </div>
-
-            <div class="container">
-                <label for="uname_user"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="email_user" required>
-
-                <label for="psw_user"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw_user" required>
-                <?php
-        if(isset($tb)&&($tb!="")){
-            echo "<h3 style='color:red'>".$tb."</h3>";
+    <div class="wrapper">
+        <div class="form-box login">
+            <h4>Hello! let's get started</h4>
+            <h5>Login to continue</h5>
+            <form action="#" method="post">
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="person-circle"></ion-icon>
+                    </span>
+                    <input class="email" type="email" name="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon" id="lock">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
+                    <input class="password" type="password" name="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="remember">
+                    <label><input type="checkbox" name="remember-checkbox">Remember me</label>
+                    <a href="reset-pass-main.php">Forgot Password</a>
+                </div>
+                <button type="submit" name="submit" class="btn-submit">Login</button>
+                <div class="login-reg">
+                    <p>Dont' have an account?
+                        <a href="Register.php" class="reg-link">Register</a>
+                    </p>
+                </div>
+                <div class="home-back">
+                    <a href="index.php">Back to Home</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="Login.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <?php
+        session_start();
+        require 'connect.php';
+        if (isset($_POST['submit'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            // check user
+            $query_user = "SELECT * FROM user WHERE user_email = '$email' AND user_pass = '$password'";
+            $result = mysqli_query($conn, $query_user);
+            $row = mysqli_fetch_assoc($result);
+            if ($email == $row['user_email'] && $password == $row['user_pass']) {
+                $_SESSION['user'] = $row['user_name'];
+                echo "<script>alert('Login successfully')</script>";
+                // back to the last page using history
+                header('location: index.php');
+                exit;
+            } else {
+                echo "<script>alert('Invalid email or password')</script>";
+            }
+        
+            // check admin
+            $query_admin = "SELECT * FROM admin WHERE admin_email = '$email'";
+            $result = mysqli_query($conn, $query_admin);
+            $row = mysqli_fetch_assoc($result);
+            error_reporting(E_ERROR | E_PARSE);
+            if ($email == $row['admin_email'] && $password == $row['admin_pass']) {
+                $_SESSION['admin'] = $row['admin_name'];
+        
+                echo "<script>alert('Login successfully')</script>";
+                header('location: admin.php');
+            } else {
+                echo "<script>alert('Invalid email or password')</script>";
+            }
         }
         ?>
-                <button type="submit" name="login">Login</button>
-                <a href="register.php" class="register-link">register</a>
-                <a href="index.php" class="index-link">Store</a>
-            </div>
-        </form>
-    </div>
 </body>
 
 </html>
