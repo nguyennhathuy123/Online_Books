@@ -7,7 +7,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="icon" href="../../../../Images/Icon-Logo/Logo-team.png" type="image/x-icon">
-   <style></style>
+   <style>
+    /* Reset some default styles */
+body, h1, h2, h3, p, figure, blockquote, dl, dd {
+    margin: 0;
+}
+
+/* Set box-sizing to border-box for all elements */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.wrapper {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.form-box {
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #777;
+    z-index: 1; /* Ensure icons are above the input */
+}
+
+input {
+    width: calc(100% - 20px); /* Adjusted width to accommodate icons */
+    padding: 10px;
+    padding-left: 30px; /* Ensure space for icons */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+label {
+    position: absolute;
+    top: 50%;
+    left: 30px; /* Adjusted left position to align with input */
+    transform: translateY(-50%);
+    color: #777;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.agree-description {
+    margin-bottom: 20px;
+}
+
+.agree-description label {
+    color: #777;
+}
+
+.btn-submit {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-reg {
+    margin-top: 10px;
+}
+
+.user-link {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.user-link:hover {
+    text-decoration: underline;
+}
+
+   </style>
 
 <body>
     <div class="wrapper">
@@ -35,10 +136,7 @@
                     <input class="password" type="password" name="password">
                     <label for="password">Password</label>
                 </div>
-                <div class="agree-description">
-                    <label>By register, you are accept with METAaov about the <a href="#">term</a> & <a
-                            href="#">condition</a></label>
-                </div>
+               
                 <button type="submit" name="submit" class="btn-submit" onclick="validate()">Register</button>
                 <div class="login-reg">
                     <p>Already have an account?
