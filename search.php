@@ -24,11 +24,6 @@ if (isset($_GET['searchTerm'])) {
             echo '<p>'.$title.'</p>
             <img src = ../Oline_Books/uploads/cover/'.$image.'>
             <p>'.$description.'</p>';
-            
-          
-
-
-
         }
     } else {
         echo "<p>No results found.</p>";

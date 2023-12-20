@@ -131,9 +131,9 @@
                             <th>STT</th>
                             <th>IMG</th>
                             <th>Product name</th>
-                            <th>Unit Price</th>
-                            <th>Amount</th>
-                            <th>To Money ($)</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>Into Money ($)</th>
                             <th>Delete</th>
                         </tr>
                         <?php showgiohang(); ?>
@@ -179,7 +179,7 @@
                             <div class="row mb10">
                                 <input type="checkbox" name=""> Remember the account?</div>
                             <div class="row mb10">
-                                <input type="submit" value="Đăng nhập">
+                                <input type="submit" value="login">
                             </div>
                         </form>
                         <li>
