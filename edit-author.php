@@ -1,32 +1,32 @@
-<?php  
+<?php
 session_start();
 
 # If the admin is logged in
-if (isset($_SESSION['user']) &&
-    isset($_SESSION['role'])) {
-    
+if (isset($_SESSION['user']) && isset($_SESSION['role'])) {
+
     # If author ID is not set
-	if (!isset($_GET['id'])) {
-		#Redirect to admin.php page
-        header("Location: admin.php");
-        exit;
-	}
-
-	$id = $_GET['id'];
-
-	# Database Connection File
-	include "connect.php";
-
-    # author helper function
-	include "php/func-author.php";
-    $author = get_author($conn, $id);
-    
-    # If the ID is invalid
-    if ($author == 0) {
-    	#Redirect to admin.php page
+    if (!isset($_GET['id'])) {
+        # Redirect to admin.php page
         header("Location: admin.php");
         exit;
     }
+
+    $id = $_GET['id'];
+
+    # Database Connection File
+    include "connect.php";
+
+    # author helper function
+    include "php/func-author.php";
+    $author = get_author($conn, $id);
+
+    # If the ID is invalid
+    if ($author == 0) {
+        # Redirect to admin.php page
+        header("Location: admin.php");
+        exit;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -100,21 +100,15 @@ if (isset($_SESSION['user']) &&
                     Author Name
                 </label>
 
-                <input type="text" value="<?=$author['id'] ?>" hidden name="author_id">
-
-
-                <input type="text" class="form-control" value="<?=$author['name'] ?>" name="author_name">
+                <input type="text" value="<?=$author['id'] ?>" name="author_id" hidden>
+                <input type="text" class="form-control" value="<?=isset($author['name']) ? $author['name'] : ''; ?>"
+                    name="author_name">
             </div>
-
             <button type="submit" class="btn btn-primary">
-                Update</button>
+                Update
+            </button>
         </form>
     </div>
 </body>
 
 </html>
-
-<?php }else{
-  header("Location: login.php");
-  exit;
-} ?>

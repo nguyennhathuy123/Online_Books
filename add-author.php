@@ -3,7 +3,7 @@ session_start();
 
 # If the admin is logged in
 if (isset($_SESSION['user']) &&
-    isset($_SESSION['role'])) {
+    isset($_SESSION['role'])) {}
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +87,3 @@ if (isset($_SESSION['user']) &&
 
 </html>
 
-<?php }else{
-  header("Location: login.php");
-  exit;
-} ?>

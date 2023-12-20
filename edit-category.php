@@ -1,32 +1,32 @@
-<?php  
+<?php
 session_start();
 
 # If the admin is logged in
-if (isset($_SESSION['user']) &&
-    isset($_SESSION['role'])) {
-    
+if (isset($_SESSION['user']) && isset($_SESSION['role'])) {
+
     # If category ID is not set
-	if (!isset($_GET['id'])) {
-		#Redirect to admin.php page
-        header("Location: admin.php");
-        exit;
-	}
-
-	$id = $_GET['id'];
-
-	# Database Connection File
-	include "connect.php";
-
-    # Category helper function
-	include "php/func-category.php";
-    $category = get_category($conn, $id);
-    
-    # If the ID is invalid
-    if ($category == 0) {
-    	#Redirect to admin.php page
+    if (!isset($_GET['id'])) {
+        # Redirect to admin.php page
         header("Location: admin.php");
         exit;
     }
+
+    $id = $_GET['id'];
+
+    # Database Connection File
+    include "connect.php";
+
+    # Category helper function
+    include "php/func-category.php";
+    $category = get_category($conn, $id);
+
+    # If the ID is invalid
+    if ($category == 0) {
+        # Redirect to admin.php page
+        header("Location: admin.php");
+        exit;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -100,21 +100,15 @@ if (isset($_SESSION['user']) &&
                     Category Name
                 </label>
 
-                <input type="text" value="<?=$category['id'] ?>" hidden name="category_id">
-
-
+                <input type="text" value="<?=$category['id'] ?>" name="category_id" hidden>
                 <input type="text" class="form-control" value="<?=$category['name'] ?>" name="category_name">
             </div>
 
             <button type="submit" class="btn btn-primary">
-                Update</button>
+                Update
+            </button>
         </form>
     </div>
 </body>
 
 </html>
-
-<?php }else{
-  header("Location: login.php");
-  exit;
-} ?>

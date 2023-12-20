@@ -31,6 +31,7 @@ if (isset($_SESSION['user']) &&
     if (isset($_GET['author_id'])) {
     	$author_id = $_GET['author_id'];
     }else $author_id = 0;
+}
 ?>
 
 <!DOCTYPE html>
@@ -103,16 +104,20 @@ if (isset($_SESSION['user']) &&
                 <label class="form-label">
                     Book Title
                 </label>
-                <input type="text" class="form-control" value="<?=$title?>" name="book_title">
-            </div>
+                <input type="text" hidden value="<?$book['id']?>" name="book_id">
 
+                <input type="text" class="form-control" value="<?= isset($book['title']) ? $book['title'] : null;?>"
+                    name="book_title">
             <div class="mb-3">
                 <label class="form-label">
                     Book Description
                 </label>
-                <input type="text" class="form-control" value="<?=$desc?>" name="book_description">
-            </div>
-
+                <input type="text" class="form-control" value="<?php if(isset($book['description'])){
+								echo $book['description'];
+							}else{
+								echo "Empty";
+                        	}
+							?>" name="book_description">
             <div class="mb-3">
                 <label class="form-label">
                     Book Author
@@ -185,7 +190,3 @@ if (isset($_SESSION['user']) &&
 
 </html>
 
-<?php }else{
-  header("Location: login.php");
-  exit;
-} ?>

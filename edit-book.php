@@ -36,7 +36,7 @@ if (isset($_SESSION['user']) &&
     # author helper function
 	include "php/func-author.php";
     $authors = get_all_author($conn);
-
+    }
 ?>
 
 <!DOCTYPE html>
@@ -207,7 +207,3 @@ if (isset($_SESSION['user']) &&
 
 </html>
 
-<?php }else{
-  header("Location: login.php");
-  exit;
-} ?>
