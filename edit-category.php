@@ -2,7 +2,7 @@
 session_start();
 
 # If the admin is logged in
-if (isset($_SESSION['user']) && isset($_SESSION['role'])) {
+if (isset($_SESSION['user'])) {
 
     # If category ID is not set
     if (!isset($_GET['id'])) {

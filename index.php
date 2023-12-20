@@ -88,7 +88,7 @@ if(!isset($_SESSION))
         <label for="searchTerm">Search:</label>
         <input type="text" id="searchTerm" name="searchTerm" required>
         <button type="submit">Search</button>
-    </form>
+        </form>
         <div class="d-flex pt-3">
             <?php if ($books == 0){ ?>
             <div class="alert alert-warning 
